@@ -1,4 +1,4 @@
-export{LinkedList};
+export{LinkedList, NodeCreator};
 
 
 
@@ -22,6 +22,8 @@ const LinkedList = () => {
      }
      listItem.setNext(newNode);
     }
+
+    
     
     const getHead = () => Head;
     return{appendValue,getHead}
@@ -39,9 +41,9 @@ const LinkedList = () => {
     
     
     const far = LinkedList();
-    far.appendValue('one');
+/*     far.appendValue('one');
     far.appendValue('two');
-    far.appendValue(3);
+    far.appendValue(3); */
     
     const ofar = LinkedList();
     const one = NodeCreator();
