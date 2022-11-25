@@ -91,6 +91,41 @@ const LinkedList = () => {
       popTarget.setNext(null);
     }
 
+    const contains = (value) => {
+      let listItem = Head;
+      let counter = getListSize();
+
+      if (Head === null) {
+        return 'List is empty'
+      }
+      while(counter > 0) {
+        counter--;
+        if (listItem.getValue() === value) {
+          return true
+        }
+
+        listItem = listItem.getNext();
+      }
+        return false
+    }
+
+    const find = (value) => {
+      let listItem = Head;
+      let counter = 0;
+
+      if(Head === null ) {
+        return 'List is empty'
+       }
+       while(counter < getListSize()) {
+        counter++;
+        if (listItem.getValue() === value) {
+          return counter
+        }
+        listItem = listItem.getNext();
+      }
+      return null
+  }
+
     
     const getHead = () => {
      if(Head === null ) {
@@ -99,7 +134,7 @@ const LinkedList = () => {
      return Head
     };
     return{appendValue,getHead, prependValue, getListSize, getTail, atPosition
-    , pop}
+    , pop, contains, find}
     }
     
     const NodeCreator = (inp) => {

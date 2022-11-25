@@ -63,9 +63,16 @@ test('removes the last element from the list', () => {
 });
 /* this removes from the list but does not delete the node */
 
+test('searches for a value and returns true if found or false if not', () => {
+    expect(appendList.contains(3)).toBe(true);
+    expect(appendList.contains(5)).toBe(false);
+    expect(appendList.contains('one')).toBe(true);
+});
 
-
-
+test('returns the index of the node containing provided value, or null', () => {
+    expect(appendList.find(3)).toBe(3);
+    expect(appendList.find(5)).toBe(null);
+});
 
 
 
@@ -76,6 +83,8 @@ test('all functions handle an empty list', () => {
     expect(emptyList.getTail()).toBe('List is empty');
     expect(emptyList.atPosition(2)).toBe('List is empty');
     expect(emptyList.pop()).toBe('List is empty');
+    expect(emptyList.contains(3)).toBe('List is empty');
+    expect(emptyList.find(5)).toBe('List is empty');
 });
 
 
