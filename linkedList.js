@@ -7,9 +7,9 @@ const LinkedList = () => {
     let Head = null;
     
     const appendValue = (value) => {
+
      const newNode = NodeCreator(value); 
      newNode.setValue(value);
-     console.log(newNode.getValue())
     
      if( Head === null) {
       return (Head = newNode);
@@ -23,10 +23,83 @@ const LinkedList = () => {
      listItem.setNext(newNode);
     }
 
+    const prependValue = (value) => {
+
+      const newNode = NodeCreator(value);
+      newNode.setValue(value);
+
+      if( Head === null) {
+        return (Head = newNode);
+       }
+      let prevHead = Head;
+
+       Head = newNode;
+       Head.setNext(prevHead);
+    }
     
+    const getListSize = () => {
+
+    let listItem = Head;
+    let counter = 1;
+      
+      if (Head === null) {
+        return 0;
+      }
+
+      while(listItem.getNext() !== null) {
+        counter++;
+        listItem = listItem.getNext();
+       };
+
+       return counter;
+    }
+
+    const getTail = () => {
+      let listItem = Head;
+
+      if(Head === null ) {
+        return 'List is empty'
+       }
+
+      while(listItem.getNext() !== null) {
+        listItem = listItem.getNext();
+       };
+       return listItem;
+    }
+
+    const atPosition = (value) => {
+      let listItem = Head;
+      let counter = value;
+
+      if (Head === null) {
+        return 'List is empty'
+      }
+
+      while(counter > 1) {
+        counter--;
+        listItem = listItem.getNext();
+      }
+      return listItem
+    }
+
+    const pop = () => {
+      let popTarget = atPosition(getListSize() - 1)
+
+      if (Head === null) {
+        return 'List is empty'
+      }
+      popTarget.setNext(null);
+    }
+
     
-    const getHead = () => Head;
-    return{appendValue,getHead}
+    const getHead = () => {
+     if(Head === null ) {
+      return 'List is empty'
+     }
+     return Head
+    };
+    return{appendValue,getHead, prependValue, getListSize, getTail, atPosition
+    , pop}
     }
     
     const NodeCreator = (inp) => {
